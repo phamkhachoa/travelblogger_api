@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 2, 2020 11:36:25 PM by Hibernate Tools 4.3.5.Final -->
+<hibernate-mapping>
+    <class name="com.travelblogger.entities.TblProvince" table="tbl_province" catalog="travelblogger" optimistic-lock="version">
+        <id name="idProvince" type="int">
+            <column name="id_province" />
+            <generator class="assigned" />
+        </id>
+        <property name="nameProvince" type="string">
+            <column name="name_province" length="50" not-null="true" />
+        </property>
+        <property name="imgProvince" type="string">
+            <column name="img_province" length="65535" not-null="true" />
+        </property>
+        <property name="activeFlag" type="java.lang.Integer">
+            <column name="active_flag" />
+        </property>
+        <set name="tblPosts" table="tbl_post" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_province" not-null="true" />
+            </key>
+            <one-to-many class="com.travelblogger.entities.TblPost" />
+        </set>
+    </class>
+</hibernate-mapping>

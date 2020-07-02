@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 2, 2020 11:36:25 PM by Hibernate Tools 4.3.5.Final -->
+<hibernate-mapping>
+    <class name="com.travelblogger.entities.TblSavePost" table="tbl_save_post" catalog="travelblogger" optimistic-lock="version">
+        <id name="idSavePost" type="java.lang.Integer">
+            <column name="id_save_post" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="tblAccount" class="com.travelblogger.entities.TblAccount" fetch="select">
+            <column name="id_account" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tblPost" class="com.travelblogger.entities.TblPost" fetch="select">
+            <column name="id_post" not-null="true" />
+        </many-to-one>
+        <property name="saveDate" type="date">
+            <column name="save_date" length="10" not-null="true" />
+        </property>
+        <property name="activeFlag" type="java.lang.Integer">
+            <column name="active_flag" />
+        </property>
+    </class>
+</hibernate-mapping>
