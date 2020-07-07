@@ -42,12 +42,6 @@ public class TblPost implements java.io.Serializable {
 	private String namePlace;
 	private String title;
 	private int activeFlag;
-	@OneToMany(fetch = FetchType.LAZY)
-	private Set<TblCommentPost> tblCommentPosts = new HashSet<TblCommentPost>(0);
-	@OneToMany(fetch = FetchType.LAZY)
-	private Set<TblLikePost> tblLikePosts = new HashSet<TblLikePost>(0);
-	@OneToMany(fetch = FetchType.LAZY)
-	private Set<TblSavePost> tblSavePosts = new HashSet<TblSavePost>(0);
 
 	public TblPost() {
 	}
@@ -84,9 +78,6 @@ public class TblPost implements java.io.Serializable {
 		this.namePlace = namePlace;
 		this.title = title;
 		this.activeFlag = activeFlag;
-		this.tblCommentPosts = tblCommentPosts;
-		this.tblLikePosts = tblLikePosts;
-		this.tblSavePosts = tblSavePosts;
 	}
 
 	@Id
@@ -211,32 +202,4 @@ public class TblPost implements java.io.Serializable {
 	public void setActiveFlag(int activeFlag) {
 		this.activeFlag = activeFlag;
 	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "tblPost")
-	public Set<TblCommentPost> getTblCommentPosts() {
-		return this.tblCommentPosts;
-	}
-
-	public void setTblCommentPosts(Set<TblCommentPost> tblCommentPosts) {
-		this.tblCommentPosts = tblCommentPosts;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "tblPost")
-	public Set<TblLikePost> getTblLikePosts() {
-		return this.tblLikePosts;
-	}
-
-	public void setTblLikePosts(Set<TblLikePost> tblLikePosts) {
-		this.tblLikePosts = tblLikePosts;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "tblPost")
-	public Set<TblSavePost> getTblSavePosts() {
-		return this.tblSavePosts;
-	}
-
-	public void setTblSavePosts(Set<TblSavePost> tblSavePosts) {
-		this.tblSavePosts = tblSavePosts;
-	}
-
 }

@@ -22,7 +22,6 @@ public class TblTopics implements java.io.Serializable {
 	private int idTopic;
 	private String nameTopic;
 	private int activeFlag;
-	private Set<TblPost> tblPosts = new HashSet<TblPost>(0);
 
 	public TblTopics() {
 	}
@@ -37,7 +36,6 @@ public class TblTopics implements java.io.Serializable {
 		this.idTopic = idTopic;
 		this.nameTopic = nameTopic;
 		this.activeFlag = activeFlag;
-		this.tblPosts = tblPosts;
 	}
 
 	@Id
@@ -68,14 +66,4 @@ public class TblTopics implements java.io.Serializable {
 	public void setActiveFlag(int activeFlag) {
 		this.activeFlag = activeFlag;
 	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "tblTopics")
-	public Set<TblPost> getTblPosts() {
-		return this.tblPosts;
-	}
-
-	public void setTblPosts(Set<TblPost> tblPosts) {
-		this.tblPosts = tblPosts;
-	}
-
 }

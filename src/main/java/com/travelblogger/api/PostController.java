@@ -16,7 +16,8 @@ public class PostController {
 	IPostService iPostService;
 	
 	@RequestMapping(value = "/home")
-	public List<TblPost> home() {
-		return iPostService.fillAll();
+	public List<TblPost> findAll() {
+		List <TblPost> list = iPostService.fillAll();
+		return list;
 	}
 }
