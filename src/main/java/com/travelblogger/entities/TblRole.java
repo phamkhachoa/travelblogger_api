@@ -22,7 +22,7 @@ public class TblRole implements java.io.Serializable {
 	private int idRole;
 	private String nameRole;
 	private int activeFlag;
-	private Set<TblAccount> tblAccounts = new HashSet<TblAccount>(0);
+//	private Set<TblAccount> tblAccounts = new HashSet<TblAccount>(0);
 
 	public TblRole() {
 	}
@@ -33,12 +33,12 @@ public class TblRole implements java.io.Serializable {
 		this.activeFlag = activeFlag;
 	}
 
-	public TblRole(int idRole, String nameRole, int activeFlag, Set<TblAccount> tblAccounts) {
-		this.idRole = idRole;
-		this.nameRole = nameRole;
-		this.activeFlag = activeFlag;
-		this.tblAccounts = tblAccounts;
-	}
+//	public TblRole(int idRole, String nameRole, int activeFlag) {
+//		this.idRole = idRole;
+//		this.nameRole = nameRole;
+//		this.activeFlag = activeFlag;
+////		this.tblAccounts = tblAccounts;
+//	}
 
 	@Id
 
@@ -69,13 +69,13 @@ public class TblRole implements java.io.Serializable {
 		this.activeFlag = activeFlag;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "tblRole")
-	public Set<TblAccount> getTblAccounts() {
-		return this.tblAccounts;
-	}
-
-	public void setTblAccounts(Set<TblAccount> tblAccounts) {
-		this.tblAccounts = tblAccounts;
-	}
+//	@Column(fetch = FetchType.LAZY, mappedBy = "tblRole")
+//	public Set<TblAccount> getTblAccounts() {
+//		return this.tblAccounts;
+//	}
+//
+//	public void setTblAccounts(Set<TblAccount> tblAccounts) {
+//		this.tblAccounts = tblAccounts;
+//	}
 
 }

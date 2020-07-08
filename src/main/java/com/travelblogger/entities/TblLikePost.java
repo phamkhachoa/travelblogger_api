@@ -21,21 +21,21 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 public class TblLikePost implements java.io.Serializable {
 
 	private Integer idLikePost;
-	private TblAccount tblAccount;
-	private TblPost tblPost;
+	private int idAccount;
+	private int idPost;
 	private Integer activeFlag;
 
 	public TblLikePost() {
 	}
 
-	public TblLikePost(TblAccount tblAccount, TblPost tblPost) {
-		this.tblAccount = tblAccount;
-		this.tblPost = tblPost;
+	public TblLikePost(int idAccount, int idPost) {
+		this.idAccount = idAccount;
+		this.idPost = idPost;
 	}
 
-	public TblLikePost(TblAccount tblAccount, TblPost tblPost, Integer activeFlag) {
-		this.tblAccount = tblAccount;
-		this.tblPost = tblPost;
+	public TblLikePost(int idAccount, int idPost, Integer activeFlag) {
+		this.idAccount = idAccount;
+		this.idPost = idPost;
 		this.activeFlag = activeFlag;
 	}
 
@@ -51,24 +51,22 @@ public class TblLikePost implements java.io.Serializable {
 		this.idLikePost = idLikePost;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_account", nullable = false)
-	public TblAccount getTblAccount() {
-		return this.tblAccount;
+	@Column(name = "id_account", nullable = false)
+	public int getTblAccount() {
+		return this.idAccount;
 	}
 
-	public void setTblAccount(TblAccount tblAccount) {
-		this.tblAccount = tblAccount;
+	public void setTblAccount(int idAccount) {
+		this.idAccount = idAccount;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_post", nullable = false)
-	public TblPost getTblPost() {
-		return this.tblPost;
+	@Column(name = "id_post", nullable = false)
+	public int getTblPost() {
+		return this.idPost;
 	}
 
-	public void setTblPost(TblPost tblPost) {
-		this.tblPost = tblPost;
+	public void setTblPost(int idPost) {
+		this.idPost = idPost;
 	}
 
 	@Column(name = "active_flag")

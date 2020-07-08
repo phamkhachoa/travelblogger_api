@@ -24,23 +24,23 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 public class TblSavePost implements java.io.Serializable {
 
 	private Integer idSavePost;
-	private TblAccount tblAccount;
-	private TblPost tblPost;
+	private int idAccount;
+	private int idPost;
 	private Date saveDate;
 	private Integer activeFlag;
 
 	public TblSavePost() {
 	}
 
-	public TblSavePost(TblAccount tblAccount, TblPost tblPost, Date saveDate) {
-		this.tblAccount = tblAccount;
-		this.tblPost = tblPost;
+	public TblSavePost(int tblAccount, int tblPost, Date saveDate) {
+		this.idAccount = idAccount;
+		this.idPost = idPost;
 		this.saveDate = saveDate;
 	}
 
-	public TblSavePost(TblAccount tblAccount, TblPost tblPost, Date saveDate, Integer activeFlag) {
-		this.tblAccount = tblAccount;
-		this.tblPost = tblPost;
+	public TblSavePost(int idAccount, int idPost, Date saveDate, Integer activeFlag) {
+		this.idAccount = idAccount;
+		this.idPost = idPost;
 		this.saveDate = saveDate;
 		this.activeFlag = activeFlag;
 	}
@@ -57,24 +57,22 @@ public class TblSavePost implements java.io.Serializable {
 		this.idSavePost = idSavePost;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_account", nullable = false)
-	public TblAccount getTblAccount() {
-		return this.tblAccount;
+	@Column(name = "id_account", nullable = false)
+	public int getTblAccount() {
+		return this.idAccount;
 	}
 
-	public void setTblAccount(TblAccount tblAccount) {
-		this.tblAccount = tblAccount;
+	public void setTblAccount(int idAccount) {
+		this.idAccount = idAccount;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_post", nullable = false)
-	public TblPost getTblPost() {
-		return this.tblPost;
+	@Column(name = "id_post", nullable = false)
+	public int getTblPost() {
+		return this.idPost;
 	}
 
-	public void setTblPost(TblPost tblPost) {
-		this.tblPost = tblPost;
+	public void setTblPost(int idPost) {
+		this.idPost = idPost;
 	}
 
 	@Temporal(TemporalType.DATE)

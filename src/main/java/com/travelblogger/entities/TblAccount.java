@@ -25,7 +25,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 public class TblAccount implements java.io.Serializable {
 
 	private Integer idAccount;
-	private TblRole tblRole;
+	private int idRole;
 	private String username;
 	private String email;
 	private String phoneNumber;
@@ -33,16 +33,13 @@ public class TblAccount implements java.io.Serializable {
 	private String salt;
 	private String aliases;
 	private int activeFlag;
-	private Set<TblCommentPost> tblCommentPosts = new HashSet<TblCommentPost>(0);
-	private Set<TblSavePost> tblSavePosts = new HashSet<TblSavePost>(0);
-	private Set<TblLikePost> tblLikePosts = new HashSet<TblLikePost>(0);
 
 	public TblAccount() {
 	}
 
-	public TblAccount(TblRole tblRole, String username, String email, String phoneNumber, String password, String salt,
+	public TblAccount(int idRole, String username, String email, String phoneNumber, String password, String salt,
 			String aliases, int activeFlag) {
-		this.tblRole = tblRole;
+		this.idRole = idRole;
 		this.username = username;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
@@ -52,21 +49,21 @@ public class TblAccount implements java.io.Serializable {
 		this.activeFlag = activeFlag;
 	}
 
-	public TblAccount(TblRole tblRole, String username, String email, String phoneNumber, String password, String salt,
-			String aliases, int activeFlag, Set<TblCommentPost> tblCommentPosts, Set<TblSavePost> tblSavePosts,
-			Set<TblLikePost> tblLikePosts) {
-		this.tblRole = tblRole;
-		this.username = username;
-		this.email = email;
-		this.phoneNumber = phoneNumber;
-		this.password = password;
-		this.salt = salt;
-		this.aliases = aliases;
-		this.activeFlag = activeFlag;
-		this.tblCommentPosts = tblCommentPosts;
-		this.tblSavePosts = tblSavePosts;
-		this.tblLikePosts = tblLikePosts;
-	}
+//	public TblAccount(TblRole tblRole, String username, String email, String phoneNumber, String password, String salt,
+//			String aliases, int activeFlag, Set<TblCommentPost> tblCommentPosts, Set<TblSavePost> tblSavePosts,
+//			Set<TblLikePost> tblLikePosts) {
+//		this.tblRole = tblRole;
+//		this.username = username;
+//		this.email = email;
+//		this.phoneNumber = phoneNumber;
+//		this.password = password;
+//		this.salt = salt;
+//		this.aliases = aliases;
+//		this.activeFlag = activeFlag;
+//		this.tblCommentPosts = tblCommentPosts;
+//		this.tblSavePosts = tblSavePosts;
+//		this.tblLikePosts = tblLikePosts;
+//	}
 
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
@@ -80,14 +77,13 @@ public class TblAccount implements java.io.Serializable {
 		this.idAccount = idAccount;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "role", nullable = false)
-	public TblRole getTblRole() {
-		return this.tblRole;
+	@Column(name = "role", nullable = false)
+	public int getTblRole() {
+		return this.idRole;
 	}
 
-	public void setTblRole(TblRole tblRole) {
-		this.tblRole = tblRole;
+	public void setTblRole(int idRole) {
+		this.idRole = idRole;
 	}
 
 	@Column(name = "username", nullable = false, length = 100)
@@ -153,31 +149,31 @@ public class TblAccount implements java.io.Serializable {
 		this.activeFlag = activeFlag;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "tblAccount")
-	public Set<TblCommentPost> getTblCommentPosts() {
-		return this.tblCommentPosts;
-	}
-
-	public void setTblCommentPosts(Set<TblCommentPost> tblCommentPosts) {
-		this.tblCommentPosts = tblCommentPosts;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "tblAccount")
-	public Set<TblSavePost> getTblSavePosts() {
-		return this.tblSavePosts;
-	}
-
-	public void setTblSavePosts(Set<TblSavePost> tblSavePosts) {
-		this.tblSavePosts = tblSavePosts;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "tblAccount")
-	public Set<TblLikePost> getTblLikePosts() {
-		return this.tblLikePosts;
-	}
-
-	public void setTblLikePosts(Set<TblLikePost> tblLikePosts) {
-		this.tblLikePosts = tblLikePosts;
-	}
+//	@OneToMany(fetch = FetchType.LAZY, mappedBy = "tblAccount")
+//	public Set<TblCommentPost> getTblCommentPosts() {
+//		return this.tblCommentPosts;
+//	}
+//
+//	public void setTblCommentPosts(Set<TblCommentPost> tblCommentPosts) {
+//		this.tblCommentPosts = tblCommentPosts;
+//	}
+//
+//	@OneToMany(fetch = FetchType.LAZY, mappedBy = "tblAccount")
+//	public Set<TblSavePost> getTblSavePosts() {
+//		return this.tblSavePosts;
+//	}
+//
+//	public void setTblSavePosts(Set<TblSavePost> tblSavePosts) {
+//		this.tblSavePosts = tblSavePosts;
+//	}
+//
+//	@OneToMany(fetch = FetchType.LAZY, mappedBy = "tblAccount")
+//	public Set<TblLikePost> getTblLikePosts() {
+//		return this.tblLikePosts;
+//	}
+//
+//	public void setTblLikePosts(Set<TblLikePost> tblLikePosts) {
+//		this.tblLikePosts = tblLikePosts;
+//	}
 
 }

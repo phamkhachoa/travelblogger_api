@@ -28,10 +28,8 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 public class TblPost implements java.io.Serializable {
 
 	private Integer idPost;
-	@ManyToOne(fetch = FetchType.LAZY)
-	private TblProvince tblProvince;
-	@ManyToOne(fetch = FetchType.LAZY)
-	private TblTopics tblTopics;
+	private int idProvince;
+	private int idTopic;
 	private String description;
 	private String content;
 	private String imgPost;
@@ -46,11 +44,11 @@ public class TblPost implements java.io.Serializable {
 	public TblPost() {
 	}
 
-	public TblPost(TblProvince tblProvince, TblTopics tblTopics, String description, String content, String imgPost,
+	public TblPost(int idProvince, int idTopic, String description, String content, String imgPost,
 			Date createDate, int likes, String district, int idAccount, String namePlace, String title,
 			int activeFlag) {
-		this.tblProvince = tblProvince;
-		this.tblTopics = tblTopics;
+		this.idProvince = idProvince;
+		this.idTopic = idTopic;
 		this.description = description;
 		this.content = content;
 		this.imgPost = imgPost;
@@ -63,22 +61,22 @@ public class TblPost implements java.io.Serializable {
 		this.activeFlag = activeFlag;
 	}
 
-	public TblPost(TblProvince tblProvince, TblTopics tblTopics, String description, String content, String imgPost,
-			Date createDate, int likes, String district, int idAccount, String namePlace, String title, int activeFlag,
-			Set<TblCommentPost> tblCommentPosts, Set<TblLikePost> tblLikePosts, Set<TblSavePost> tblSavePosts) {
-		this.tblProvince = tblProvince;
-		this.tblTopics = tblTopics;
-		this.description = description;
-		this.content = content;
-		this.imgPost = imgPost;
-		this.createDate = createDate;
-		this.likes = likes;
-		this.district = district;
-		this.idAccount = idAccount;
-		this.namePlace = namePlace;
-		this.title = title;
-		this.activeFlag = activeFlag;
-	}
+//	public TblPost(TblProvince tblProvince, TblTopics tblTopics, String description, String content, String imgPost,
+//			Date createDate, int likes, String district, int idAccount, String namePlace, String title, int activeFlag,
+//			Set<TblCommentPost> tblCommentPosts, Set<TblLikePost> tblLikePosts, Set<TblSavePost> tblSavePosts) {
+//		this.tblProvince = tblProvince;
+//		this.tblTopics = tblTopics;
+//		this.description = description;
+//		this.content = content;
+//		this.imgPost = imgPost;
+//		this.createDate = createDate;
+//		this.likes = likes;
+//		this.district = district;
+//		this.idAccount = idAccount;
+//		this.namePlace = namePlace;
+//		this.title = title;
+//		this.activeFlag = activeFlag;
+//	}
 
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
@@ -92,24 +90,22 @@ public class TblPost implements java.io.Serializable {
 		this.idPost = idPost;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_province", nullable = false)
-	public TblProvince getTblProvince() {
-		return this.tblProvince;
+	@Column(name = "id_province", nullable = false)
+	public int getTblProvince() {
+		return this.idProvince;
 	}
 
-	public void setTblProvince(TblProvince tblProvince) {
-		this.tblProvince = tblProvince;
+	public void setTblProvince(int idProvince) {
+		this.idProvince = idProvince;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_topic", nullable = false)
-	public TblTopics getTblTopics() {
-		return this.tblTopics;
+	@Column(name = "id_topic", nullable = false)
+	public int getTblTopics() {
+		return this.idTopic;
 	}
 
-	public void setTblTopics(TblTopics tblTopics) {
-		this.tblTopics = tblTopics;
+	public void setTblTopics(int idTopic) {
+		this.idTopic = idTopic;
 	}
 
 	@Column(name = "description", nullable = false, length = 100)

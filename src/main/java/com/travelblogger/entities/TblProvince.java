@@ -23,7 +23,7 @@ public class TblProvince implements java.io.Serializable {
 	private String nameProvince;
 	private String imgProvince;
 	private Integer activeFlag;
-	private Set<TblPost> tblPosts = new HashSet<TblPost>(0);
+//	private Set<TblPost> tblPosts = new HashSet<TblPost>(0);
 
 	public TblProvince() {
 	}
@@ -34,13 +34,12 @@ public class TblProvince implements java.io.Serializable {
 		this.imgProvince = imgProvince;
 	}
 
-	public TblProvince(int idProvince, String nameProvince, String imgProvince, Integer activeFlag,
-			Set<TblPost> tblPosts) {
+	public TblProvince(int idProvince, String nameProvince, String imgProvince, Integer activeFlag) {
 		this.idProvince = idProvince;
 		this.nameProvince = nameProvince;
 		this.imgProvince = imgProvince;
 		this.activeFlag = activeFlag;
-		this.tblPosts = tblPosts;
+//		this.tblPosts = tblPosts;
 	}
 
 	@Id
@@ -81,13 +80,13 @@ public class TblProvince implements java.io.Serializable {
 		this.activeFlag = activeFlag;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "tblProvince")
-	public Set<TblPost> getTblPosts() {
-		return this.tblPosts;
-	}
-
-	public void setTblPosts(Set<TblPost> tblPosts) {
-		this.tblPosts = tblPosts;
-	}
+//	@OneToMany(fetch = FetchType.LAZY, mappedBy = "tblProvince")
+//	public Set<TblPost> getTblPosts() {
+//		return this.tblPosts;
+//	}
+//
+//	public void setTblPosts(Set<TblPost> tblPosts) {
+//		this.tblPosts = tblPosts;
+//	}
 
 }
