@@ -13,6 +13,6 @@ public class AccountDto {
     private String password;
     private Integer salt;
     private Integer role;
-    private Integer aliases;
+    private String aliases;
     private Integer activeFlag;
 }

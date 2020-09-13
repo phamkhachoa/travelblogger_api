@@ -30,10 +30,15 @@ public class UserDetailService implements UserDetailsService {
     @SneakyThrows
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        List<GrantedAuthority> authorities = Collections.singletonList(new SimpleGrantedAuthority("USER"));
-        return accountRepository.findByUsername(username)
-                .map(u -> new User(u.getUsername(), u.getPassword(), authorities))
-                .orElseThrow(() -> new Exception("user not found"));
+        Optional<AccountEntity> opt = accountRepository.findByUsername(username);
+        if (!opt.isPresent()) {
+            throw new Exception("user not found");
+        }
+        return new CustomUserDetails(opt.get());
+//        List<GrantedAuthority> authorities = Collections.singletonList(new SimpleGrantedAuthority("USER"));
+//        return accountRepository.findByUsername(username)
+//                .map(u -> new User(u.getUsername(), u.getPassword(), authorities))
+//                .orElseThrow(() -> new Exception("user not found"));
     }
 
     public UserDetails loadUserById(Long userId) throws Exception {

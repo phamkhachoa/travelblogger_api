@@ -11,12 +11,12 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
-@Import(SecurityConfig.class)
 public class HomeController {
 
     @Autowired
@@ -25,9 +25,13 @@ public class HomeController {
     @Autowired
     private JwtTokenProvider tokenProvider;
 
-    @PostMapping("/login")
-    public LoginResponse authenticateUser(@Validated @RequestBody LoginRequest loginRequest) {
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
+    @PostMapping("/login")
+    public LoginResponse authenticateUser(@RequestBody LoginRequest loginRequest) {
+
+        System.out.printf(passwordEncoder.encode("admin"));
         // Xác thực từ username và password.
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
@@ -50,10 +54,4 @@ public class HomeController {
     public String randomStuff(){
         return "JWT Hợp lệ mới có thể thấy được message này";
     }
-
-//    @Bean(name = BeanIds.AUTHENTICATION_MANAGER)
-//    @Override
-//    public AuthenticationManager authenticationManagerBean() throws Exception {
-//        return super.authenticationManagerBean();
-//    }
 }

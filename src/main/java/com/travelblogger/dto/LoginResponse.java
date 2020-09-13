@@ -1,12 +1,13 @@
 package com.travelblogger.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
-@AllArgsConstructor
+@Data
 public class LoginResponse {
-    private String jwt;
+    private String accessToken;
+    private String tokenType = "Bearer";
+
+    public LoginResponse(String accessToken) {
+        this.accessToken = accessToken;
+    }
 }

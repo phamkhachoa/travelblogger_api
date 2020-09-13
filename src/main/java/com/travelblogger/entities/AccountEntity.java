@@ -29,7 +29,7 @@ public class AccountEntity {
     @Column(name = "role")
     private Integer role;
     @Column(name = "aliases")
-    private Integer aliases;
+    private String aliases;
     @Column(name = "active_flag")
     private Integer activeFlag;
 }
